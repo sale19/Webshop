@@ -47,15 +47,6 @@ function callbackOnRegister(req, res) {
   });
 }
 
-app.get('/users/:id', function (req, res) {
-  connection.query("SELECT * FROM users WHERE id= '"+req.params.id+"'", function(err, rows, fields) {
-  res.writeHead(200, { 'Content-Type': 'application/json'});
-   res.send(JSON.stringify(rows));
-  });
-  });
-    
-
-
 function userRegistration(nameInput, surnameInput, usernameInput, emailInput, hashPassword, res) {
   const sqlQuery = "INSERT INTO users (name,surname,username,email,password) VALUES (?,?,?,?,?)";
   const promise = connection.promise().query(sqlQuery, [nameInput, surnameInput, usernameInput, emailInput, hashPassword]);
