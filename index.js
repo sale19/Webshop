@@ -75,7 +75,6 @@ function  callbackOnLogin(req, res) {
       res.status(401).json({message: 'Your user account is compromised!'});
     }
     const savedPassword = rows[0].password;
-    console.log(`Saved password ${savedPassword}`);
     const comparePassword = await bcrypt.compare(passwordInput, savedPassword);
     if(comparePassword) {
       res.status(200).json({message: "User successfully logged-in!"});
