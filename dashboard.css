@@ -1,0 +1,91 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(white, black);
+}
+
+.product-container {
+max-width: 800px;
+padding: 20px 25px;
+background-color: white;
+margin: auto;
+border-radius: 3px;
+box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+.table-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: gray;
+    color: white;
+    padding: 16px 30px;
+}
+
+th {
+    text-align: center;
+    color: gray;
+}
+
+.btn {
+    padding: 3px 20px;
+    min-width: 90px;
+}
+
+.form-wrapper {
+    display: none;
+}
+
+.form-wrapper.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 100;
+}
+
+.productForm{
+    background-color: white;
+    width: 600px;
+    padding: 20px 50px;
+    border-radius: 5px;
+}
+
+.form-control {
+    width: 90%;
+}
+
+.group {
+    display: flex;
+    margin: 15px 0;
+}
+
+.group label {
+width: 70px;
+line-height: 40px;
+height: 40px;
+}
+
+.action {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin: 20px;
+}
+
+#description {
+    resize: none;
+}

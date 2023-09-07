@@ -1,0 +1,19 @@
+{
+  "name": "webshop",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express-async-errors": "^3.1.1",
+    "mysql2": "^3.5.2",
+    "object-assign": "^4.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
