@@ -6,10 +6,13 @@ const router = require("./routes/router");
 const bcrypt = require("bcryptjs");
 
 
+
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 app.use(router);
 
 const configObject = {
@@ -17,7 +20,7 @@ const configObject = {
   port: 3306,
   user: "root",
   password: "root",
-  database: "users",
+  database: "webshop",
 };
 
 

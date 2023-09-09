@@ -1,9 +1,9 @@
-const { connectToDatabase, connectToDatabase2 } = require("./routes/database");
+const { connectToDatabase } = require("./routes/database");
 
 const express = require("express");
 const app = express();
 app.use(connectToDatabase);
-app.use(connectToDatabase2);
+
 
 
 const fetchProducts = async (req, res) => {
