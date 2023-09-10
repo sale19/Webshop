@@ -38,10 +38,8 @@ const urlAddress = `${registerUrl}/register`;
             document.getElementById('labelMessage').innerHTML = "'User successfully registered!";
             localStorage.setItem('user', JSON.stringify({nameInput, surnameInput, usernameInput, emailInput}));
             window.location.href = 'dashboard.html';
-            //alert('User successfully registered!');
         }else{
             document.getElementById('labelMessage2').innerHTML = "Problem with user register! That user already exists!";
-            //alert('Problem with user register!');
         }
     })
     .catch((error) => {
