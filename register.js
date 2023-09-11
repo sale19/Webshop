@@ -14,6 +14,7 @@ if(passwordInput != confirmPasswordInput) {
 }else{
 document.getElementById('labelMessage').innerHTML = "";
 submitRegisterData(nameInput, surnameInput, usernameInput, emailInput, passwordInput);
+
     }
 }
 
@@ -31,6 +32,8 @@ const registerRequestParams = {
     body: JSON.stringify({nameInput, surnameInput, usernameInput, emailInput, passwordInput}),
 
 };
+
+
 const registerUrl = 'http://localhost:8080/users';
 const urlAddress = `${registerUrl}/register`;
     fetch(urlAddress, registerRequestParams).then((res) => {

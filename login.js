@@ -17,7 +17,6 @@ function callbackOnLogin(event) {
 
     
 
-
     fetch(loginServiceAddress, urlRequest)
     
     .then(response => {
