@@ -29,8 +29,8 @@ promise
    [getPageSizeValueTop, getPageSizeValueBottom].forEach((getPageSizeValueTop)=> {
     getPageSizeValueTop.addEventListener('change', ()=>{
 
-        start = 1;
-        end = 10;
+    start = 1;
+    end = 10;
 
    getData(1, getPageSizeValueTop.value);
 
@@ -96,10 +96,10 @@ function createPaginationButtonsTop(totalPageNumber) {
         start = start - limitShownNumberOfPages;
         end = start  + limitShownNumberOfPages -1 ;
         end = totalPageNumber < end ? totalPageNumber : end;
-            createPaginationButtonsTop(totalPageNumber);
+        createPaginationButtonsTop(totalPageNumber);
             });
 
-            addProducts.appendChild(leftArrowLink);
+        addProducts.appendChild(leftArrowLink);
           
         }
         for(let i = start; i <= end; i++) {
@@ -122,7 +122,7 @@ function createPaginationButtonsTop(totalPageNumber) {
         end = totalPageNumber < end ? totalPageNumber : end;
         createPaginationButtonsTop(totalPageNumber);
         });
-            addProducts.appendChild(rightArrowLink);
+        addProducts.appendChild(rightArrowLink);
     }
 }
 
@@ -130,7 +130,7 @@ function createPaginationButtonsTop(totalPageNumber) {
     function createPaginationButtonsBottom(totalPageNumber) {
     const addProducts = document.getElementById('paginationBottom');
     
-    addProducts.innerHTML = '';
+        addProducts.innerHTML = '';
    
         start = start ? start: 1;
         end = end ? end : limitShownNumberOfPages;
@@ -156,7 +156,7 @@ function createPaginationButtonsTop(totalPageNumber) {
         pageLink.addEventListener('click', () =>
         getData(i, getPageSizeValueBottom.value)
         );
-    addProducts.appendChild(pageLink);
+        addProducts.appendChild(pageLink);
     }
     
         if(end < totalPageNumber) {
