@@ -53,7 +53,6 @@ async function checkProduct(name){
 
 
 async function addProduct(name,specification,description,price){
-
     return new Promise(function(resolve,reject){
         checkProduct(name)
         .then((res)=>{
@@ -129,6 +128,8 @@ async function deleteProduct(id){
     })
 
 }
+
+
 
 exports = module.exports ={
     getProducts,

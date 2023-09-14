@@ -20,9 +20,6 @@ submitRegisterData(nameInput, surnameInput, usernameInput, emailInput, passwordI
 
 
 function submitRegisterData(nameInput, surnameInput, usernameInput, emailInput, passwordInput) {
-
-
-
 const registerRequestParams = {
     method: "POST",
     headers: {
@@ -38,7 +35,7 @@ const registerUrl = 'http://localhost:8080/users';
 const urlAddress = `${registerUrl}/register`;
     fetch(urlAddress, registerRequestParams).then((res) => {
         if(res.ok) {
-            document.getElementById('labelMessage').innerHTML = "'User successfully registered!";
+            document.getElementById('labelMessage').innerHTML = "User successfully registered!";
             localStorage.setItem('user', JSON.stringify({nameInput, surnameInput, usernameInput, emailInput}));
             window.location.href = 'dashboard.html';
         }else{

@@ -19,6 +19,7 @@ const fetchProducts = async (req, res) => {
   }
 };
 
+
 const fetchProductPage = async (req, res) => {
   try {
     const connection = await connectToDatabase();

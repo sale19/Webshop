@@ -6,34 +6,18 @@ fetch(`http://localhost:8080/proizvodi`)
 })
 .then((data) => {
     data.forEach(product => {
-
-    
-      const documentBody = document.getElementById('product-details');
-   
-      documentBody.innerHTML = '';
-  
-  
+    const documentBody = document.getElementById('product-details');
+    documentBody.innerHTML = '';
     const rows = document.createElement('div');
-    
-  
     rows.classList.add('row');
     rows.classList.add('column-3');
-  
     rows.innerHTML = `
-  
       <img>${product.img}</img>
     `
   
     documentBody.appendChild(rows);
-  
-  
     const rows2 = document.createElement('div');
-    
     rows2.classList.add('column-3');
-
-
-    
-
     rows2.innerHTML = `
   
       <p>${product.name}</p>

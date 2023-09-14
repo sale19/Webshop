@@ -25,7 +25,7 @@ promise
 
 
     const getPageSizeValueTop = document.querySelector('#pageSizeValueTop');
-   const getPageSizeValueBottom = document.querySelector('#pageSizeValueBottom');
+    const getPageSizeValueBottom = document.querySelector('#pageSizeValueBottom');
    [getPageSizeValueTop, getPageSizeValueBottom].forEach((getPageSizeValueTop)=> {
     getPageSizeValueTop.addEventListener('change', ()=>{
 
@@ -57,8 +57,6 @@ addProducts.innerHTML = '';
     <p>${product.price} KM</p>
     <a class="view-details" href="details.html?/products/pdetails/${product.id}">View Details</a>
     `
-
-
     addProducts.appendChild(rows);
     
 }
@@ -67,19 +65,15 @@ addProducts.innerHTML = '';
 
 function callbackOnProductsLoad () {
   addRecommendedProductsToDocumentBody();
- 
-   
-   
 }
 
 
 function handleProductPage(productPageResponse) {
     addProductsToPagination(productPageResponse.items);
-        createPaginationButtonsTop(productPageResponse.totalPageNumber);
-        createPaginationButtonsBottom(productPageResponse.totalPageNumber);
+    createPaginationButtonsTop(productPageResponse.totalPageNumber);
+    createPaginationButtonsBottom(productPageResponse.totalPageNumber);
         
     }
-
 
 const limitShownNumberOfPages = 10;
 
@@ -87,23 +81,24 @@ let start;
 let end;
 
 function createPaginationButtonsTop(totalPageNumber) {
-    const addProducts = document.getElementById('paginationTop');
+        const addProducts = document.getElementById('paginationTop');
 
-    addProducts.innerHTML = '';
+        addProducts.innerHTML = '';
    
         start = start ? start: 1;
         end = end ? end : limitShownNumberOfPages;
         end = end > totalPageNumber ? totalPageNumber : end;
         if(start > limitShownNumberOfPages) {
-            const leftArrowLink = document.createElement('a');
-            leftArrowLink.textContent = '<<';
-            addProducts.appendChild(leftArrowLink);
-            leftArrowLink.addEventListener('click', () => {
-                start = start - limitShownNumberOfPages;
-                end = start  + limitShownNumberOfPages -1 ;
-                end = totalPageNumber < end ? totalPageNumber : end;
-                createPaginationButtonsTop(totalPageNumber);
+        const leftArrowLink = document.createElement('a');
+        leftArrowLink.textContent = '<<';
+        addProducts.appendChild(leftArrowLink);
+        leftArrowLink.addEventListener('click', () => {
+        start = start - limitShownNumberOfPages;
+        end = start  + limitShownNumberOfPages -1 ;
+        end = totalPageNumber < end ? totalPageNumber : end;
+            createPaginationButtonsTop(totalPageNumber);
             });
+
             addProducts.appendChild(leftArrowLink);
           
         }
@@ -119,13 +114,13 @@ function createPaginationButtonsTop(totalPageNumber) {
     }
     
         if(end < totalPageNumber) {
-            const rightArrowLink = document.createElement('a');
-            rightArrowLink.textContent = '>>';
-            rightArrowLink.addEventListener('click', () => {
-            start = start + limitShownNumberOfPages;
-            end = end + limitShownNumberOfPages;
-            end = totalPageNumber < end ? totalPageNumber : end;
-            createPaginationButtonsTop(totalPageNumber);
+        const rightArrowLink = document.createElement('a');
+        rightArrowLink.textContent = '>>';
+        rightArrowLink.addEventListener('click', () => {
+        start = start + limitShownNumberOfPages;
+        end = end + limitShownNumberOfPages;
+        end = totalPageNumber < end ? totalPageNumber : end;
+        createPaginationButtonsTop(totalPageNumber);
         });
             addProducts.appendChild(rightArrowLink);
     }
@@ -141,14 +136,14 @@ function createPaginationButtonsTop(totalPageNumber) {
         end = end ? end : limitShownNumberOfPages;
         end = end > totalPageNumber ? totalPageNumber : end;
         if(start > limitShownNumberOfPages) {
-            const leftArrowLink = document.createElement('a');
-            leftArrowLink.textContent = '<<';
-            addProducts.appendChild(leftArrowLink);
-            leftArrowLink.addEventListener('click', () => {
-                start = start - limitShownNumberOfPages;
-                end = start  + limitShownNumberOfPages -1 ;
-                end = totalPageNumber < end ? totalPageNumber : end;
-                createPaginationButtonsTop(totalPageNumber);
+        const leftArrowLink = document.createElement('a');
+        leftArrowLink.textContent = '<<';
+        addProducts.appendChild(leftArrowLink);
+        leftArrowLink.addEventListener('click', () => {
+        start = start - limitShownNumberOfPages;
+        end = start  + limitShownNumberOfPages -1 ;
+        end = totalPageNumber < end ? totalPageNumber : end;
+        createPaginationButtonsTop(totalPageNumber);
                 
             });
             addProducts.appendChild(leftArrowLink);
@@ -186,7 +181,7 @@ function addRecommendedProductsToDocumentBody() {
     fetch(`http://localhost:8080/proizvodi/`)
     .then((response) => response.json())
     .then((data) => {
-        data.forEach(product => {
+    data.forEach(product => {
     const rows = document.createElement('div');
   
    

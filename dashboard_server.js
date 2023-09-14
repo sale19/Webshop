@@ -42,6 +42,7 @@ app.post('/products',(req,res)=>{
 
 });
 
+
 app.put('/products',(req,res)=>{    
     db.updateProduct(req.body.name,req.body.specification,req.body.description,req.body.price,req.body.id)
     .then(()=>{
@@ -52,6 +53,7 @@ app.put('/products',(req,res)=>{
     });
 
 });
+
 
 app.delete('/products/:id',(req,res)=>{    
     db.deleteProduct(req.params.id)

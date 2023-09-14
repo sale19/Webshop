@@ -17,7 +17,7 @@ let products = [];
 
 let id = null;
 
-let data ={};
+let data = {};
 
 addProductButton.onclick = function(){
     httpm="POST";
@@ -30,23 +30,23 @@ cancelBtn.onclick = function(){
     formWrapper.classList.remove('active');
 }
 
-saveBtn.onclick= function(){
+saveBtn.onclick = function(){
 
     data.name= nameInputValue.value;
     data.specification= specsInputValue.value;
     data.description = descInputValue.value;
     data.price = priceInputValue.value;
-    if(httpm =="PUT"){
-        data.id= id
+    if(httpm == "PUT"){
+        data.id = id
     }
 
     
-    fetch(url,
+fetch(url,
         { 
             method: httpm, body: JSON.stringify(data), 
             headers: { "Content-type": "application/json" } 
         })
-    .then(()=>{
+        .then(()=>{
         clearForm();
         formWrapper.classList.remove('active');
         getProducts()
@@ -63,7 +63,6 @@ function clearForm(){
 }
 
 
-
 function getProducts(){
     fetch(url)
     .then(response=>response.json())
@@ -75,7 +74,6 @@ function getProducts(){
 
     
 }
-
 
 
 function updateTable(){
@@ -99,6 +97,7 @@ function updateTable(){
 
 }
 
+
 function editProduct(e){
    formWrapper.classList.add('active');
    httpm = "PUT"
@@ -108,9 +107,6 @@ function editProduct(e){
   specsInputValue.value = selectedProduct.specification;
   descInputValue.value = selectedProduct.description;
   priceInputValue.value = selectedProduct.price;
-
-
-   
 
 }
 

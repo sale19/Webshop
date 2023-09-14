@@ -15,10 +15,3 @@ const menuIcon = document.getElementById('menuIcon');
 }
 });
 }
-
-/*const searchButton = document.querySelector('.search-btn');
-searchButton.addEventListener('click', searchFunction);
-
-function searchFunction() {
-console.log('Clicked');
-}*/

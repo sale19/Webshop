@@ -16,9 +16,7 @@ function callbackOnLogin(event) {
     };
 
     
-
     fetch(loginServiceAddress, urlRequest)
-    
     .then(response => {
         if(response.ok) {
             localStorage.setItem('user', JSON.stringify(usernameInput));
