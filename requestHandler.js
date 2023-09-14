@@ -20,7 +20,7 @@ const fetchProducts = async (req, res) => {
 };
 
 
-const fetchProductPage = async (req, res) => {
+const countProductRows = async (req, res) => {
   try {
     const connection = await connectToDatabase();
 
@@ -63,4 +63,4 @@ const fetchRecommendedRandomProducts = async (req, res) => {
 };
 
 
-module.exports = { fetchProducts, fetchProductPage, fetchRecommendedRandomProducts };
+module.exports = { fetchProducts, countProductRows, fetchRecommendedRandomProducts };
