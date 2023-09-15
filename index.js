@@ -42,7 +42,7 @@ function callbackOnRegister(req, res) {
     bcrypt.hash(passwordInput, salt, (error, hashPassword) => {
       if(error) {
         res.status(500).json({message: `Error ${error}`});
-
+return;
       }
       userRegistration(nameInput, surnameInput, usernameInput, emailInput, hashPassword, res);
   
