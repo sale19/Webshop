@@ -11,6 +11,4 @@ router.get("/proizvodi", fetchRecommendedRandomProducts);
 
 
 
-
-
 module.exports = router;

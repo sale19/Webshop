@@ -130,7 +130,6 @@ async function deleteProduct(id){
 }
 
 
-
 exports = module.exports ={
     getProducts,
     addProduct,

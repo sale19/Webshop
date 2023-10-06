@@ -40,13 +40,13 @@ function callbackOnRegister(req, res) {
   const numberOfSaltRounds = 12;
   bcrypt.genSalt(numberOfSaltRounds, (error, salt) => {
     bcrypt.hash(passwordInput, salt, (error, hashPassword) => {
-      if(error) {
-        res.status(500).json({message: `Error ${error}`});
-return;
+      if (error) {
+        res.status(500).json({ message: `Error ${error}` });
+        return;
       }
       userRegistration(nameInput, surnameInput, usernameInput, emailInput, hashPassword, res);
-  
-      });
+
+    });
   });
 }
 
@@ -55,47 +55,47 @@ function userRegistration(nameInput, surnameInput, usernameInput, emailInput, ha
   const promise = connection.promise().query(sqlQuery, [nameInput, surnameInput, usernameInput, emailInput, hashPassword]);
 
   promise
-  .then(() => {
-    res.status(201).json({ message: "User successfully registered!"});
-  })
-.catch ((error) => {
-  res.status(500).json({ message: `Error on register user! Reason ${error}` });
-});
+    .then(() => {
+      res.status(201).json({ message: "User successfully registered!" });
+    })
+    .catch((error) => {
+      res.status(500).json({ message: `Error on register user! Reason ${error}` });
+    });
 }
-  
+
 
 app.post('/login', callbackOnLogin);
-function  callbackOnLogin(req, res) {
+function callbackOnLogin(req, res) {
   const { usernameInput, passwordInput } = req.body;
   const sqlValidationQuery = "SELECT password FROM users WHERE username = ?";
   const promise = connection.promise().query(sqlValidationQuery, [usernameInput]);
   promise
-  .then(async([rows, fields]) => {
-    if(rows.length === 0) {
-      res.status(401).json({message: 'Wrong username or password! Please try again.'});
-    }
-    if(rows.length>1){
-      res.status(401).json({message: 'Your user account is compromised!'});
-    }
-    const savedPassword = rows[0].password;
-    const comparePassword = await bcrypt.compare(passwordInput, savedPassword);
-    if(comparePassword) {
-      res.status(200).json({message: "User successfully logged-in!"});
-    } else {
-      res.status(401).json({message: 'Wrong username or password! Please try again.'});
-    }
-})
-.catch((error) => {
-  res.status(500).json({
-    message: `Error ${error}`,
-  });
-});
+    .then(async ([rows, fields]) => {
+      if (rows.length === 0) {
+        res.status(401).json({ message: 'Wrong username or password! Please try again.' });
+      }
+      if (rows.length > 1) {
+        res.status(401).json({ message: 'Your user account is compromised!' });
+      }
+      const savedPassword = rows[0].password;
+      const comparePassword = await bcrypt.compare(passwordInput, savedPassword);
+      if (comparePassword) {
+        res.status(200).json({ message: "User successfully logged-in!" });
+      } else {
+        res.status(401).json({ message: 'Wrong username or password! Please try again.' });
+      }
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: `Error ${error}`,
+      });
+    });
 }
 
 
 const port = 8080;
 //http://localhost:8080
-app.listen(port,  () => {
+app.listen(port, () => {
   console.log(`Server listening at port ${port}`);
 });
 

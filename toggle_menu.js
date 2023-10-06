@@ -4,14 +4,14 @@ menuList.style.maxHeight = "0px";
 
 function displaySmallScreenMenu() {
 
-document.addEventListener('click', function(e) {
-const menuIcon = document.getElementById('menuIcon');
+    document.addEventListener('click', function (e) {
+        const menuIcon = document.getElementById('menuIcon');
 
-    if (!menuIcon.contains(e.target)) {
-    menuList.style.maxHeight = "0px";
+        if (!menuIcon.contains(e.target)) {
+            menuList.style.maxHeight = "0px";
 
-    } else {
-   menuList.style.maxHeight = "200px";
-}
-});
+        } else {
+            menuList.style.maxHeight = "200px";
+        }
+    });
 }

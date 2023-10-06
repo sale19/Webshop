@@ -11,7 +11,7 @@ const priceInputValue = document.querySelector('#price');
 
 let httpm = null;
 
-let url ='http://localhost:4000/products';
+let url = 'http://localhost:4000/products';
 
 let products = [];
 
@@ -19,43 +19,43 @@ let id = null;
 
 let data = {};
 
-addProductButton.onclick = function(){
-    httpm="POST";
+addProductButton.onclick = function () {
+    httpm = "POST";
     clearForm();
     formWrapper.classList.add('active');
 }
 
 
-cancelBtn.onclick = function(){
+cancelBtn.onclick = function () {
     formWrapper.classList.remove('active');
 }
 
-saveBtn.onclick = function(){
+saveBtn.onclick = function () {
 
-    data.name= nameInputValue.value;
-    data.specification= specsInputValue.value;
+    data.name = nameInputValue.value;
+    data.specification = specsInputValue.value;
     data.description = descInputValue.value;
     data.price = priceInputValue.value;
-    if(httpm == "PUT"){
+    if (httpm == "PUT") {
         data.id = id
     }
 
-    
-fetch(url,
-        { 
-            method: httpm, body: JSON.stringify(data), 
-            headers: { "Content-type": "application/json" } 
+
+    fetch(url,
+        {
+            method: httpm, body: JSON.stringify(data),
+            headers: { "Content-type": "application/json" }
         })
-        .then(()=>{
-        clearForm();
-        formWrapper.classList.remove('active');
-        getProducts()
-    })
+        .then(() => {
+            clearForm();
+            formWrapper.classList.remove('active');
+            getProducts()
+        })
 
 
 }
 
-function clearForm(){
+function clearForm() {
     nameInputValue.value = "";
     specsInputValue.value = "";
     descInputValue.value = "";
@@ -63,26 +63,26 @@ function clearForm(){
 }
 
 
-function getProducts(){
+function getProducts() {
     fetch(url)
-    .then(response=>response.json())
-    .then(data=>{
-        products = data;
-        updateTable();
+        .then(response => response.json())
+        .then(data => {
+            products = data;
+            updateTable();
 
-    })
+        })
 
-    
+
 }
 
 
-function updateTable(){
-    let data="";
+function updateTable() {
+    let data = "";
 
-    if(products.length>0){
-        for(i= 0;i<products.length;i++){
+    if (products.length > 0) {
+        for (i = 0; i < products.length; i++) {
 
-            data+=  `<tr id="${products[i]['id']}">
+            data += `<tr id="${products[i]['id']}">
                         <td>${products[i]['name']}</td>
                         <td>${products[i]['specification']}</td>
                         <td>${products[i]['description']}</td>
@@ -92,32 +92,32 @@ function updateTable(){
                      </tr>`
         }
 
-     tbody.innerHTML=data;
+        tbody.innerHTML = data;
     }
 
 }
 
 
-function editProduct(e){
-   formWrapper.classList.add('active');
-   httpm = "PUT"
-   id = e.target.parentElement.parentElement.id;
-  let selectedProduct = products.filter((p)=>{return p['id'] == id})[0];
-  nameInputValue.value = selectedProduct.name;
-  specsInputValue.value = selectedProduct.specification;
-  descInputValue.value = selectedProduct.description;
-  priceInputValue.value = selectedProduct.price;
+function editProduct(e) {
+    formWrapper.classList.add('active');
+    httpm = "PUT"
+    id = e.target.parentElement.parentElement.id;
+    let selectedProduct = products.filter((p) => { return p['id'] == id })[0];
+    nameInputValue.value = selectedProduct.name;
+    specsInputValue.value = selectedProduct.specification;
+    descInputValue.value = selectedProduct.description;
+    priceInputValue.value = selectedProduct.price;
 
 }
 
-function deleteProduct(e){
-    id= e.target.parentElement.parentElement.id;
-     fetch(url+"/"+id, {method:'DELETE'})
-     .then(
-        ()=>{
-            getProducts()
-        }
-     )
+function deleteProduct(e) {
+    id = e.target.parentElement.parentElement.id;
+    fetch(url + "/" + id, { method: 'DELETE' })
+        .then(
+            () => {
+                getProducts()
+            }
+        )
 
 }
 

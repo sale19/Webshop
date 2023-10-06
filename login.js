@@ -11,22 +11,22 @@ function callbackOnLogin(event) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({usernameInput, passwordInput})
+        body: JSON.stringify({ usernameInput, passwordInput })
 
     };
 
-    
+
     fetch(loginServiceAddress, urlRequest)
-    .then(response => {
-        if(response.ok) {
-            localStorage.setItem('user', JSON.stringify(usernameInput));
-            window.location.href = 'dashboard.html';
-           
-        }else{
-        alert('You are not logged-in!');
-        window.location.href = 'index.html';
-        }
+        .then(response => {
+            if (response.ok) {
+                localStorage.setItem('user', JSON.stringify(usernameInput));
+                window.location.href = 'dashboard.html';
+
+            } else {
+                alert('You are not logged-in!');
+                window.location.href = 'index.html';
+            }
         }).catch(error => {
             alert(`${error}`);
         });
-    }
+}

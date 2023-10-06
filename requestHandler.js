@@ -26,18 +26,18 @@ const countProductRows = async (req, res) => {
 
     const page = parseInt(req.query.page);
     const pageSize = parseInt(req.query.pageSize);
- 
+
     const offset = (page - 1) * pageSize;
     const sqlQueryProductOnPage = `SELECT sql_calc_found_rows * FROM products LIMIT ${offset},${pageSize}`;
     const [product] = await connection.execute(sqlQueryProductOnPage);
-    
+
     const sqlCountQuery = "SELECT FOUND_ROWS() AS count";
     const [rows] = await connection.execute(sqlCountQuery);
     const totalProductNumber = rows[0].count;
-    const totalPageNumber = Math.ceil(totalProductNumber/pageSize);
+    const totalPageNumber = Math.ceil(totalProductNumber / pageSize);
     return res.json(
       {
-        totalPageNumber: totalPageNumber, 
+        totalPageNumber: totalPageNumber,
         items: product
       }
     );

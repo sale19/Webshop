@@ -1,24 +1,24 @@
 function generateProductDetails() {
- 
-fetch(`http://localhost:8080/proizvodi`)
-.then((response) => {
-  return response = response.json()
-})
-.then((data) => {
-    data.forEach(product => {
-    const documentBody = document.getElementById('product-details');
-    documentBody.innerHTML = '';
-    const rows = document.createElement('div');
-    rows.classList.add('row');
-    rows.classList.add('column-3');
-    rows.innerHTML = `
+
+  fetch(`http://localhost:8080/proizvodi`)
+    .then((response) => {
+      return response = response.json()
+    })
+    .then((data) => {
+      data.forEach(product => {
+        const documentBody = document.getElementById('product-details');
+        documentBody.innerHTML = '';
+        const rows = document.createElement('div');
+        rows.classList.add('row');
+        rows.classList.add('column-3');
+        rows.innerHTML = `
       <img>${product.img}</img>
     `
-  
-    documentBody.appendChild(rows);
-    const rows2 = document.createElement('div');
-    rows2.classList.add('column-3');
-    rows2.innerHTML = `
+
+        documentBody.appendChild(rows);
+        const rows2 = document.createElement('div');
+        rows2.classList.add('column-3');
+        rows2.innerHTML = `
   
       <p>${product.name}</p>
       <h1>${product.specification}</h1>
@@ -30,10 +30,10 @@ fetch(`http://localhost:8080/proizvodi`)
       <h3>Product Details</h3>
       <p>${product.description}</p>
     `
-    documentBody.appendChild(rows2);
+        documentBody.appendChild(rows2);
 
-});
-});
+      });
+    });
 }
 
 
